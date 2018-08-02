@@ -1,0 +1,112 @@
+*{
+  margin:0;
+  padding:0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+body{
+  overflow: hidden;       /*使PC端不出现滚动条*/
+}
+#canvas{
+  position: fixed;        /*使手机端不会因触摸而上下滑动*/
+  top:0;
+  left: 0;
+  background-color: #eee;
+}
+#options{
+  position: fixed;        /*使所有选项在canvas之上，此外也可以用z-index达到同样的效果*/
+  top:0;
+  right: 0;
+  padding: 10px;
+}
+ul{
+  list-style: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+li{
+  cursor: pointer;
+  margin: 4px;
+}
+ul#actions svg{
+  width: 20px;
+  height: 20px;
+  transition: all 0.2s;
+}
+ul#actions svg.active{
+  transform: scale(1.25);
+  fill: red;
+}
+
+ul#color > li{
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transition: all 0.2s ease-out;
+}
+li#black{
+  background-color: black;
+}
+li#red{
+  background-color: red;
+}
+li#green{
+  background-color: green;
+}
+li#blue{
+  background-color: blue;
+}
+
+ul#thickness > li{
+  margin: 6px;
+  height: 20px;
+  background-color: black;
+  box-shadow: 0 0 4px rgba(80, 80, 80, 0.4);
+  transition: all 0.2s ease-out;
+  position: relative;
+}
+ul#thickness > li::after{
+  content: '';
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+}
+li#thin{
+  width: 2px;
+}
+li#middle{
+  width: 6px;
+}
+li#thick{
+  width: 10px;
+}
+ul#color.remove,
+ul#thickness.remove{
+  display: none;
+}
+ul#color.active,
+ul#thickness.active{
+  animation: active 0.2s;
+  transition: all 0.2s;
+}
+@keyframes active{
+  0%{
+    display: inline-flex;
+    transform: translate(-999px);
+  }
+  80%{
+    transform: translate(10px);
+  }
+  100%{
+    transform: translate(0px);
+  }
+}
+ul#color > li.active,
+ul#thickness > li.active{
+  transform: scale(1.15);
+  box-shadow: 0 0 8px rgba(80, 80, 80, 0.8);
+}
